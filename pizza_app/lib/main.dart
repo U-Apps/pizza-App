@@ -6,6 +6,7 @@ import 'package:pizza_app/cart_screen.dart';
 import 'package:pizza_app/component/PizzaShows.dart';
 import 'package:pizza_app/home.dart';
 import 'package:pizza_app/successfulLogin.dart';
+import 'package:pizza_app/Profile.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,6 +19,6 @@ void main() {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: CartScreen(),
+        body: AccountPage(),
       )));
 }
