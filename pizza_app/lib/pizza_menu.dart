@@ -9,15 +9,19 @@ class PizzaMenu extends StatefulWidget {
 }
 
 class pizza {
-  String name, des,Price;
+  String name, des, Price;
   int numImg;
-  pizza({required this.name, required this.des, required this.numImg, required this.Price});
-
+  pizza(
+      {required this.name,
+      required this.des,
+      required this.numImg,
+      required this.Price});
 }
 
 class _PizzaMenuState extends State<PizzaMenu> {
   final String value_Search = '';
   int _selectedIndex = 0;
+  final TextEditingController valueSrarch = TextEditingController();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,15 +30,56 @@ class _PizzaMenuState extends State<PizzaMenu> {
   }
 
   final List<pizza> listOfPizza = [
-    pizza(name:'Margherita' , des:'A classic Italian pizza\n with tomatoes,\n .', numImg:1, Price:'\$ 20')
-    ,pizza(name:'meet' , des:'A classic Italian pizza with\n tomatoes,\n .', numImg:2, Price:'\$ 10')
-   , pizza(name:'Margherita' , des:'A classic Italian pizza\n with tomatoes,\n .', numImg:3, Price:'\$ 30'),
-    pizza(name:'Margherita' , des:'A classic Italian pizza \nwith tomatoes,\n .', numImg:4, Price:'\$ 40')
-,  pizza(name:'Margherita' , des:'A classic Italian pizza\n with tomatoes,\n.', numImg:5, Price:'\$ 50')
-
-
-     
+    pizza(
+        name: 'Margherita',
+        des: 'A classic Italian pizza\n with tomatoes,\n .',
+        numImg: 2,
+        Price: '\$ 20'),
+    pizza(
+        name: 'meet',
+        des: 'A classic Italian pizza with\n tomatoes,\n .',
+        numImg: 2,
+        Price: '\$ 10'),
+    pizza(
+        name: 'Margherita',
+        des: 'A classic Italian pizza\n with tomatoes,\n .',
+        numImg: 3,
+        Price: '\$ 30'),
+    pizza(
+        name: 'Margherita',
+        des: 'A classic Italian pizza \nwith tomatoes,\n .',
+        numImg: 4,
+        Price: '\$ 40'),
+    pizza(
+        name: 'Margherita',
+        des: 'A classic Italian pizza\n with tomatoes,\n.',
+        numImg: 3,
+        Price: '\$ 50')
   ];
+
+  List<pizza> _filteredItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredItems = listOfPizza;
+  }
+
+  void _filterItems(String query) {
+    setState(() {
+      if(query.isEmpty){
+        _filteredItems = listOfPizza;
+        return;
+      }
+
+      else{
+
+      _filteredItems = listOfPizza
+          .where(
+              (item) => item.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();}
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +93,8 @@ class _PizzaMenuState extends State<PizzaMenu> {
           Padding(
             padding: const EdgeInsets.all(10),
             child: TextField(
+              onChanged: _filterItems,
+              controller: valueSrarch,
               decoration: InputDecoration(
                 labelText: 'Search for pizza',
                 alignLabelWithHint: true,
@@ -57,13 +104,25 @@ class _PizzaMenuState extends State<PizzaMenu> {
               ),
             ),
           ),
+          
           Container(
             height: 500,
             child: ListView.builder(
-              itemCount: listOfPizza.length,
+              itemCount: _filteredItems.length,
               itemBuilder: (context, index) {
-                return categoryPizza(
-                    NumImg:listOfPizza[index].numImg, prices:listOfPizza[index].Price, Name:listOfPizza[index].name, des:listOfPizza[index].des);
+                if (valueSrarch != emptyTextSelectionControls) {
+                  return categoryPizza(
+                      NumImg: _filteredItems[index].numImg,
+                      prices: _filteredItems[index].Price,
+                      Name: _filteredItems[index].name,
+                      des: _filteredItems[index].des);
+                } else {
+                  return categoryPizza(
+                      NumImg: listOfPizza[index].numImg,
+                      prices: listOfPizza[index].Price,
+                      Name: listOfPizza[index].name,
+                      des: listOfPizza[index].des);
+                }
               },
             ),
           ),
