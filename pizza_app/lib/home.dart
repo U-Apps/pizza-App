@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/component/PizzaShows.dart';
+import 'component/pizzaCards.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -50,83 +52,15 @@ class _HomeState extends State<Home> {
         SizedBox(
           height: 40,
         ),
-        Row(
-          children: <Widget>[
-            Card(
-                color: Color.fromARGB(255, 209, 37, 15),
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '  Special Offer\n for March',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w900),
-                        ),
-                        Text(
-                          '  We are here with the \n best pizzas in town.',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // إجراء عند النقر على الزر
-                          },
-                          child: Text(
-                            'Buy now',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Image.asset('assets/images/pizza.png'),
-                  ],
-                )),
-            Card(
-                color: Color.fromARGB(255, 209, 37, 15),
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '  Special Offer\n for March',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w900),
-                        ),
-                        Text(
-                          '  We are here with the \n best pizzas in town.',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // إجراء عند النقر على الزر
-                          },
-                          child: Text(
-                            'Buy now',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Image.asset('assets/images/pizza.png'),
-                  ],
-                )),
-          ],
+        Container(
+
+          height: 180,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return Pizzashows();
+              }),
         ),
         SizedBox(
           height: 10,
@@ -150,285 +84,19 @@ class _HomeState extends State<Home> {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 5,
         ),
-        Row(
-          children: <Widget>[
-//             Card(
-//               child: Column(
-//                 children: <Widget>[
-//                   Image.asset(
-//                     'assets/images/object.png',
-//                     width: 100,
-//                     height: 100,
-//                   ),
-//                   Text('Spicy Diablo'),
-//                   Text(
-//                     'Classic tomato sauce,Mozzarella\n cheese,Fresh basil leaves',
-//                     style: TextStyle(fontSize: 8),
-//                   ),
-//                   Row(
-//                     children: <Widget>[
-//                       Text('20'),
-//                       SizedBox(
-//                         width: 20,
-//                       ),
-
-//                       ElevatedButton(
-//   onPressed: () {
-//     // وظيفة الزر عند الضغط عليه (مثلاً: زيادة قيمة عددية)
-//   },
-//   style: ElevatedButton.styleFrom(
-//    backgroundColor:  Colors.black, // لون الخلفية
-//     foregroundColor: Colors.white, // لون الأيقونة
-//     shape: RoundedRectangleBorder(
-//       borderRadius: BorderRadius.only(
-//         topRight: Radius.circular(0), // الزاوية العلوية اليمين مقطوعة
-//         topLeft: Radius.circular(50),
-//         bottomLeft: Radius.circular(50),
-//         bottomRight: Radius.circular(50),
-//       ),
-//     ),
-//   ),
-//   child: Icon(Icons.add), // أيقونة الجمع
-// )
-
-//                       //  IconButton(
-//                       //   color:Colors.white,
-//                       //   style: ButtonStyle(
-
-//                       //   ),
-//                       //   onPressed:()=>{}, icon:Icon(Icons.add))
-//                     ],
-//                   )
-//                 ],
-//               ),
-//             )
-//             ,
-/////
-
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(15), // يمكنك تعديل قيمة الدائرة
-              ),
-              color: Colors.red,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-
-                  //     SizedBox(),
-                  //     // مسافة فارغة
-                  //     Icon(Icons.favorite, color: Colors.white),
-                  //   ],
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/pizza.png',
-                          width: 100,
-                          height: 100,
-                        ),
-                        Text(
-                          'Spicy Diablo',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Classic tomato sauce\n Cheese, Fresh basil leaves',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              '\$62',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-//
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(15), // يمكنك تعديل قيمة الدائرة
-              ),
-              color: Colors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-
-                  //     SizedBox(),
-                  //     // مسافة فارغة
-                  //     Icon(Icons.favorite, color: Colors.white),
-                  //   ],
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/pizza.png',
-                          width: 100,
-                          height: 100,
-                        ),
-                        Text(
-                          'Spicy Diablo',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Classic tomato sauce\n Cheese, Fresh basil leaves',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              '\$62',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(250, 255, 123, 0),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-//
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(15), // يمكنك تعديل قيمة الدائرة
-              ),
-              color: Colors.red,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-
-                  //     SizedBox(),
-                  //     // مسافة فارغة
-                  //     Icon(Icons.favorite, color: Colors.white),
-                  //   ],
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/pizza.png',
-                          width: 100,
-                          height: 100,
-                        ),
-                        Text(
-                          'Spicy Diablo',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Classic tomato sauce\n Cheese, Fresh basil leaves',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              '\$62',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-//
-
-            ////
-          ],
+        Container(
+          height: 250,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return Pizzacards();
+              }),
         ),
         SizedBox(
-          height: 10,
+          height: 5,
         ),
         BottomNavigationBar(
           backgroundColor: Colors.red,
