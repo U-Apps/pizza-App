@@ -11,6 +11,13 @@ import 'package:pizza_app/Profile.dart';
 
 void main() {
   runApp(MaterialApp(
+routes:{
+  'Regitered':(context)=>SignUpPage(),
+  'welcome':(context)=> Welcome(),
+  'home':(context)=>Home(),
+  'login':(context)=>Loginscreen(),
+  
+} ,    
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
@@ -20,6 +27,6 @@ void main() {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body:PizzaMenu(),
+        body:Welcome(),
       )));
 }

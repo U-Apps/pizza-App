@@ -6,13 +6,16 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-return AnimatedSplashScreen(
-      splash: Image.asset('assets/images/logo.png',width:10000,height: 100000,),
-      nextScreen: LoginPage(),
-      splashTransition: SplashTransition.fadeTransition,
-      duration: 4000,
-      splashIconSize: 400,
-    );
+    
+return Scaffold(
+ body: AnimatedSplashScreen(
+        splash: Image.asset('assets/images/logo.png',width:10000,height: 100000,),
+        nextScreen:Loginscreen(),
+        splashTransition: SplashTransition.fadeTransition,
+        duration: 4000,
+        splashIconSize: 400,
+      ),
+);
   }
 }
 
