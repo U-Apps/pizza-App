@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Pizzacards extends StatefulWidget {
-  const Pizzacards({super.key});
+  final String tital, des,price;
+  final int imgNum;
+  const Pizzacards({super.key,required this.tital,required this.des,required this.imgNum,required this.price});
 
   @override
   State<Pizzacards> createState() => _PizzacardsState();
@@ -33,12 +35,12 @@ class _PizzacardsState extends State<Pizzacards> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/pizza1.png',
+                  'assets/images/pizza${widget.imgNum}.png',
                   width: 100,
                   height: 100,
                 ),
                 Text(
-                  'Spicy Diablo',
+                  '${widget.tital}',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -46,7 +48,7 @@ class _PizzacardsState extends State<Pizzacards> {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  'Classic tomato sauce\n Cheese, Fresh basil leaves',
+                  '${widget.des}',
                   style: TextStyle(fontSize: 10),
                 ),
                 SizedBox(height: 10),
@@ -54,7 +56,7 @@ class _PizzacardsState extends State<Pizzacards> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      '\$62',
+                      '${widget.price}',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

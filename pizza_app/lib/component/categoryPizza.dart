@@ -16,7 +16,7 @@ class categoryPizza extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Image.asset(
-              'assets/images/${NumImg}.png',
+              'assets/images/pizza${NumImg}.png',
               width: 100,
               height: 100,
             ),
