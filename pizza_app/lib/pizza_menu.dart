@@ -54,8 +54,9 @@ class _PizzaMenuState extends State<PizzaMenu> {
         itemBuilder: (context, index) {
           return ListTile(
             leading: Image.asset(
-                'assets/images/pizza${listOfPizza[index].numImg}.png',
-                width: 50),
+              'assets/images/pizza${listOfPizza[index].numImg}.png',
+              width: 50,
+            ),
             title: Text(listOfPizza[index].name),
             subtitle: Text(listOfPizza[index].des),
             trailing: IconButton(
@@ -67,7 +68,6 @@ class _PizzaMenuState extends State<PizzaMenu> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // الانتقال إلى شاشة السلة وتمرير العناصر المختارة
           Navigator.push(
             context,
             MaterialPageRoute(

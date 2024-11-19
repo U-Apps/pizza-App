@@ -44,7 +44,7 @@ class _PizzashowsState extends State<Pizzashows> {
                 ),
               ],
             ),
-            Image.asset('assets/images/pizza.png'),
+            Image.asset('assets/images/pizza1.png'),
           ],
         ));
   }

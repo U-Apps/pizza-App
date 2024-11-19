@@ -33,7 +33,7 @@ class _PizzacardsState extends State<Pizzacards> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/pizza.png',
+                  'assets/images/pizza1.png',
                   width: 100,
                   height: 100,
                 ),
