@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/component/message.dart';
 import 'package:pizza_app/home.dart';
+import 'package:pizza_app/models/accountDate.dart';
+import 'package:pizza_app/models/loginaccount.dart';
 import 'package:pizza_app/pizza_menu.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -11,8 +14,9 @@ class Loginscreen extends StatefulWidget {
 
 class _LoginscreenState extends State<Loginscreen> {
   @override
-  String username = '';
-  String password = '';
+  TextEditingController _username = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  TextEditingController _email = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -47,6 +51,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 SizedBox(height: 10),
 
                 TextFormField(
+                  controller: _username,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: ' UserName',
@@ -60,14 +65,14 @@ class _LoginscreenState extends State<Loginscreen> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      username = value;
+                      _username.text = value;
                     });
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter email address';
                     }
-                    if (value!.length < 8) {
+                    if (value!.length < 1) {
                       return 'Password should be at least 8 characters long';
                     }
                     return null;
@@ -75,6 +80,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 ),
                 SizedBox(height: 15),
                 TextFormField(
+                  controller: _password,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -87,14 +93,14 @@ class _LoginscreenState extends State<Loginscreen> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      password = value;
+                      _password.text = value;
                     });
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter password';
                     }
-                    if (value.length < 4) {
+                    if (value.length < 1) {
                       return 'Password length is short';
                     }
                     return null;
@@ -114,10 +120,23 @@ class _LoginscreenState extends State<Loginscreen> {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // إذا كانت البيانات صحيحة، قم بإجراء ما تريد
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                      // هنا يمكنك إضافة منطق تسجيل الدخول
+                      users.add(accountData(userName: 'ali', passWord: '123'));
+
+                      bool isAuthenticated = false;
+                      for (var user in users) {
+                        if (user.userName == _username.text &&
+                            user.passWord == _password.text) {
+                          isAuthenticated = true;
+                          break;
+                        }
+                      }
+                      if (isAuthenticated) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Home()));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Invalid username or password')));
+                      }
                     }
                   },
                   child: Text('LOGIN'),
@@ -127,6 +146,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 ),
                 TextButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, 'forget');
                     // هنا يمكنك إضافة منطق نسيان كلمة المرور
                   },
                   child: Text(

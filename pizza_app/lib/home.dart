@@ -132,14 +132,17 @@ class _HomeState extends State<Home> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        
         backgroundColor: Colors.red,
+        
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
             backgroundColor: Colors.red,
+            
           ),
-          BottomNavigationBarItem(
+          BottomNavigationBarItem(  
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
             backgroundColor: Colors.red,
@@ -154,12 +157,15 @@ class _HomeState extends State<Home> {
             label: 'Profile',
             backgroundColor: Colors.red,
           ),
+     
         ],
+       
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         unselectedLabelStyle: TextStyle(color: Colors.white),
         onTap: _onItemTapped,
+        
       ),
     );
   }

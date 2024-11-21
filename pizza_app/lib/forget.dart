@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/component/ShowDailog.dart';
+import 'package:pizza_app/component/message.dart';
 import 'package:pizza_app/successfulLogin.dart';
 import 'Register.dart';
 
@@ -55,7 +56,9 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
-                   Showdialog(content: 'تم ارسال رساله التحقق\n الئ رقم جوالك', icon:Icon(Icons.abc_outlined));
+                  Message message = new Message();
+                  message.showSuccessDialog(context,
+                      'تم ارسال رساله \nالئ رقم هاتفك', Icon(Icons.warning),'login');
 
                   // هنا يمكنك إضافة منطق لإرسال رمز التحقق
                 },

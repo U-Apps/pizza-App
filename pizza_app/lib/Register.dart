@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/component/message.dart';
+import 'package:pizza_app/models/accountDate.dart';
+import 'package:pizza_app/models/loginaccount.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -9,7 +12,10 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   @override
-  String userName = '', passWord = '', Email = '';
+  TextEditingController _username = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  TextEditingController _email = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                  controller: _username,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'UserName',
@@ -43,7 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      userName = value;
+                      _username.text = value;
                     });
                   },
                   validator: (value) {
@@ -54,6 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   }),
               SizedBox(height: 16),
               TextFormField(
+                  controller: _email,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -66,7 +74,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      userName = value;
+                      _email.text = value;
                     });
                   },
                   validator: (value) {
@@ -77,6 +85,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   }),
               SizedBox(height: 16),
               TextFormField(
+                  controller: _password,
                   obscureText: true,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -90,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      userName = value;
+                      _password.text = value;
                     });
                   },
                   validator: (value) {
@@ -114,8 +123,15 @@ class _SignUpPageState extends State<SignUpPage> {
                   // هنا يمكنك إضافة منطق التسجيل (مثال: التحقق من البيانات، إرسالها إلى الخادم)
                   print('تم النقر على زر التسجيل');
                   if (_formKey.currentState!.validate()) {
-                    showSuccessDialog(context);
-               
+                    // showSuccessDialog(context);
+                    final Message message = Message();
+
+                    message.showSuccessDialog(context, 'تم انشاء حساب جديد',
+                        Icon(Icons.join_right), 'home');
+
+                    final acc = accountData(
+                        userName: _username.text, passWord: _password.text);
+                    users.add(acc);
                   }
                 },
                 child: Text('SignUP'),
@@ -175,13 +191,19 @@ class _SignUpPageState extends State<SignUpPage> {
       builder: (BuildContext context) {
         return Center(
           child: AlertDialog(
-           contentPadding: EdgeInsets.only(left: 20,right: 30,top: 15),
-            content: Text(  'تم تسجيل الدخول بنجاح',
-                style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold,),),
+            contentPadding: EdgeInsets.only(left: 20, right: 30, top: 15),
+            content: Text(
+              'تم تسجيل الدخول بنجاح',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context); 
+                  Navigator.pop(context);
                   Navigator.pushNamed(context, 'home');
                   // إغلاق الحوار
                 },
