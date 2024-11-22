@@ -17,7 +17,7 @@ void main() {
         'welcome': (context) => Welcome(),
         'home': (context) => Home(),
         'login': (context) => Loginscreen(),
-        'forget':(context)=>ForgetPassWordScreen()
+        'forget': (context) => ForgetPassWordScreen()
       },
       debugShowCheckedModeBanner: false,
       home: Scaffold(

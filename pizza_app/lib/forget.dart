@@ -57,8 +57,11 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
                   Message message = new Message();
-                  message.showSuccessDialog(context,
-                      'تم ارسال رساله \nالئ رقم هاتفك', Icon(Icons.warning),'login');
+                  message.showSuccessDialog(
+                      context,
+                      'تم ارسال رساله \nالئ رقم هاتفك',
+                      Icon(Icons.warning),
+                      'login');
 
                   // هنا يمكنك إضافة منطق لإرسال رمز التحقق
                 },
