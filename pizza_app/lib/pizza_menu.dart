@@ -48,6 +48,7 @@ class _PizzaMenuState extends State<PizzaMenu> {
       appBar: AppBar(
         title: Text('Pizza Menu'),
         backgroundColor: Colors.red,
+        automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
         itemCount: listOfPizza.length,
