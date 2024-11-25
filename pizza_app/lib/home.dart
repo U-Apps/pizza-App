@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/Profile.dart';
+import 'package:pizza_app/models/accountDate.dart';
 import 'pizza_menu.dart';
 import 'package:pizza_app/component/PizzaShows.dart';
 import 'package:pizza_app/component/PizzaCards.dart';
 import 'models/pizza.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
-
+  Home({super.key});
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
+ 
+  
 
   // الشاشات الثلاث
-  final List<Widget> _screens = [
+ List<Widget> _screens = [
     HomeScreen(),
     PizzaMenu(),
     AccountPage(),
@@ -89,7 +91,7 @@ class HomeScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          const SizedBox(height: 10),
+          const SizedBox(height: 90),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[

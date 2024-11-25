@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app/component/message.dart';
 import 'package:pizza_app/home.dart';
 import 'package:pizza_app/models/accountDate.dart';
-import 'package:pizza_app/models/loginaccount.dart';
+// import 'package:pizza_app/models/loginaccount.dart';
 import 'package:pizza_app/pizza_menu.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -120,14 +120,19 @@ class _LoginscreenState extends State<Loginscreen> {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      users.add(accountData(userName: 'ali', passWord: '123'));
+                      users.add(accountData(userName: 'ali', passWord: '123',Email:'a@gmail.com'));
 
                       bool isAuthenticated = false;
                       for (var user in users) {
                         if (user.userName == _username.text &&
                             user.passWord == _password.text) {
+                         
                           isAuthenticated = true;
-                          break;
+
+                          CurrentUsersInsys.add(accountData(
+                              userName: user.userName,
+                              passWord: user.passWord,
+                              Email: user.Email));   ;
                         }
                       }
                       if (isAuthenticated) {

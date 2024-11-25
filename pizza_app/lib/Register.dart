@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/component/message.dart';
 import 'package:pizza_app/models/accountDate.dart';
-import 'package:pizza_app/models/loginaccount.dart';
+// import 'package:pizza_app/models/loginaccount.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -127,10 +127,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     final Message message = Message();
 
                     message.showSuccessDialog(context, 'تم انشاء حساب جديد',
-                        Icon(Icons.join_right), 'home');
+                        Icon(Icons.join_right), 'login');
 
                     final acc = accountData(
-                        userName: _username.text, passWord: _password.text);
+                        userName: _username.text, passWord: _password.text,Email: _email.text);
                     users.add(acc);
                   }
                 },

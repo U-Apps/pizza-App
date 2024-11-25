@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/models/accountDate.dart';
 
 class AccountPage extends StatefulWidget {
+  AccountPage({super.key});
   @override
   _AccountPageState createState() => _AccountPageState();
 }
 
 class _AccountPageState extends State<AccountPage> {
-  String userName = "Ahmed";
-  String userEmail = "ahmed@example.com";
+  String userName = CurrentUsersInsys[0].userName;
+  String userEmail = CurrentUsersInsys[0].Email;
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +52,13 @@ class _AccountPageState extends State<AccountPage> {
             child: ListView(
               padding: EdgeInsets.all(20),
               children: [
-                AccountOption(title: 'Delete Account', icon: Icons.delete),
-                AccountOption(title: 'Log Out', icon: Icons.logout),
+                AccountOption(
+                    title: 'Delete Account', icon: Icons.delete, event: 'del'),
+                AccountOption(
+                  title: 'Log Out',
+                  icon: Icons.logout,
+                  event: 'logout',
+                ),
               ],
             ),
           ),
@@ -64,8 +71,10 @@ class _AccountPageState extends State<AccountPage> {
 class AccountOption extends StatelessWidget {
   final String title;
   final IconData icon;
+  final String event;
 
-  const AccountOption({required this.title, required this.icon});
+  const AccountOption(
+      {required this.title, required this.icon, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +89,28 @@ class AccountOption extends StatelessWidget {
               fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         trailing: Icon(Icons.arrow_forward_ios, color: Colors.white),
-        onTap: () {},
+        onTap: () {
+          if (event == 'del') {
+            accountData ac = accountData(
+                userName: CurrentUsersInsys[0].userName,
+                passWord: CurrentUsersInsys[0].passWord,
+                Email: CurrentUsersInsys[0].Email);
+
+            users.removeWhere((ac) => ac.userName == ac.userName);
+            //    users.remove(accountData(
+            // userName: CurrentUsersInsys[0].userName,
+            // passWord: CurrentUsersInsys[0].passWord,
+            // Email: CurrentUsersInsys[0].Email));
+
+            CurrentUsersInsys.removeAt(0);
+            print(CurrentUsersInsys.isEmpty);
+
+            Navigator.pushNamed(context, 'login');
+          }
+          if (event == 'logout') {
+            Navigator.pushNamed(context, 'login');
+          }
+        },
       ),
     );
   }
