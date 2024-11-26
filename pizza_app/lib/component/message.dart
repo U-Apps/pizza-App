@@ -41,7 +41,7 @@ class Message {
                   Navigator.pushNamed(context, '${route}');
                   // إغلاق الحوار
                 },
-                child: Text('موافق'),
+                child: Text('Yes'),
               ),
             ],
           ),

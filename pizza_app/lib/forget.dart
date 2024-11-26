@@ -15,7 +15,7 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('نسيت كلمة المرور؟'),
+        title: Text('Forget Password?'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -34,7 +34,7 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
               TextField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(25),
-                  labelText: 'البريد الإلكتروني/رقم الهاتف',
+                  labelText: 'Email/Phone',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20)),
                   fillColor: Colors.white,
@@ -58,13 +58,13 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
                   Message message = new Message();
                   message.showSuccessDialog(
                       context,
-                      'تم ارسال رساله \nالئ رقم هاتفك',
+                      'message be send \nto your Phone',
                       Icon(Icons.warning),
                       'login');
 
                   // هنا يمكنك إضافة منطق لإرسال رمز التحقق
                 },
-                child: Text('إرسال رمز التحقق'),
+                child: Text('Send verification code'),
               ),
               SizedBox(height: 20),
               // لوحة المفاتيح الرقمية (يمكنك استخدام حزمة خارجية لتخصيصها بشكل أكبر)

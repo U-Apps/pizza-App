@@ -121,16 +121,21 @@ class _SignUpPageState extends State<SignUpPage> {
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
                   // هنا يمكنك إضافة منطق التسجيل (مثال: التحقق من البيانات، إرسالها إلى الخادم)
-                  print('تم النقر على زر التسجيل');
+                  print('The registration button has been clicked');
                   if (_formKey.currentState!.validate()) {
                     // showSuccessDialog(context);
                     final Message message = Message();
 
-                    message.showSuccessDialog(context, 'تم انشاء حساب جديد',
-                        Icon(Icons.join_right), 'login');
+                    message.showSuccessDialog(
+                        context,
+                        'A new account has been created',
+                        Icon(Icons.join_right),
+                        'login');
 
                     final acc = accountData(
-                        userName: _username.text, passWord: _password.text,Email: _email.text);
+                        userName: _username.text,
+                        passWord: _password.text,
+                        Email: _email.text);
                     users.add(acc);
                   }
                 },
@@ -151,15 +156,31 @@ class _SignUpPageState extends State<SignUpPage> {
                   // أزرار تسجيل الدخول باستخدام Google و Facebook
                   Column(
                     children: <Widget>[
-                      IconButton(onPressed: () => {}, icon: Icon(Icons.facebook,color: Colors.white,)),
-                      Text('Facebook',style: TextStyle(color: Colors.white),)
+                      IconButton(
+                          onPressed: () => {},
+                          icon: Icon(
+                            Icons.facebook,
+                            color: Colors.white,
+                          )),
+                      Text(
+                        'Facebook',
+                        style: TextStyle(color: Colors.white),
+                      )
                     ],
                   ),
 
                   Column(
                     children: <Widget>[
-                      IconButton(onPressed: () => {}, icon: Icon(Icons.shop_2,color: Colors.white,)),
-                      Text('Google',style: TextStyle(color: Colors.white),)
+                      IconButton(
+                          onPressed: () => {},
+                          icon: Icon(
+                            Icons.shop_2,
+                            color: Colors.white,
+                          )),
+                      Text(
+                        'Google',
+                        style: TextStyle(color: Colors.white),
+                      )
                     ],
                   ),
 
@@ -193,7 +214,7 @@ class _SignUpPageState extends State<SignUpPage> {
           child: AlertDialog(
             contentPadding: EdgeInsets.only(left: 20, right: 30, top: 15),
             content: Text(
-              'تم تسجيل الدخول بنجاح',
+              'You have successfully logged in',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -207,7 +228,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   Navigator.pushNamed(context, 'home');
                   // إغلاق الحوار
                 },
-                child: Text('موافق'),
+                child: Text('Yes'),
               ),
             ],
           ),

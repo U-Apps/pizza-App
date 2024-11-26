@@ -34,9 +34,7 @@ class _PizzashowsState extends State<Pizzashows> {
                   '  ${widget.des}',
                   style: TextStyle(
                     color: Colors.white,
-                    
                   ),
-                 
                 ),
                 SizedBox(
                   height: 10,
