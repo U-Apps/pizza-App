@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Pizzashows extends StatefulWidget {
-  const Pizzashows({super.key});
+  final String Tital, des;
+  final int imgName;
+  const Pizzashows(
+      {super.key,
+      required this.Tital,
+      required this.des,
+      required this.imgName});
 
   @override
   State<Pizzashows> createState() => _PizzashowsState();
@@ -18,17 +24,19 @@ class _PizzashowsState extends State<Pizzashows> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '  Special Offer\n for March',
+                  '${widget.Tital}',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.w900),
                 ),
                 Text(
-                  '  We are here with the \n best pizzas in town.',
+                  '  ${widget.des}',
                   style: TextStyle(
                     color: Colors.white,
+                    
                   ),
+                 
                 ),
                 SizedBox(
                   height: 10,
@@ -44,7 +52,7 @@ class _PizzashowsState extends State<Pizzashows> {
                 ),
               ],
             ),
-            Image.asset('assets/images/pizza1.png'),
+            Image.asset('assets/images/pizza${widget.imgName}.png'),
           ],
         ));
   }

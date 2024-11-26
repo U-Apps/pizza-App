@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/models/accountDate.dart';
 
 class AccountPage extends StatefulWidget {
+  AccountPage({super.key});
   @override
   _AccountPageState createState() => _AccountPageState();
 }
 
 class _AccountPageState extends State<AccountPage> {
-  String userName = "Ahmed";
-  String userEmail = "ahmed@example.com";
+  String userName = CurrentUsersInsys[0].userName;
+  String userEmail = CurrentUsersInsys[0].Email;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
+        automaticallyImplyLeading: false,
         title: Text(
           'Account',
           style: TextStyle(color: Colors.white),
@@ -24,97 +27,38 @@ class _AccountPageState extends State<AccountPage> {
       body: Column(
         children: [
           Container(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(30)),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage:
-                        AssetImage('images/img.jpg'), // ضع صورة هنا
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    userName,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    userEmail,
-                    style: TextStyle(fontSize: 16, color: Color(0xFFE6361D)),
-                  ),
-                ],
-              ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/img.jpg'),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  userName,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  userEmail,
+                  style: TextStyle(fontSize: 16, color: Color(0xFFE6361D)),
+                ),
+              ],
             ),
           ),
           Expanded(
             child: ListView(
               padding: EdgeInsets.all(20),
               children: [
-                AccountOption(title: 'About Us', icon: Icons.info),
-                AccountOption(title: 'Help', icon: Icons.help),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // تسجيل الخروج
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: Color(0xFFE6361D),
-                      backgroundColor: Color(0xFFE6361D),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.logout, color: Colors.white),
-                        SizedBox(width: 10),
-                        Text(
-                          'Log Out',
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // حذف الحساب
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: Colors.red,
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.delete, color: Colors.white),
-                        SizedBox(width: 10),
-                        Text(
-                          'Delete Account',
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
+                AccountOption(
+                    title: 'Delete Account', icon: Icons.delete, event: 'del'),
+                AccountOption(
+                  title: 'Log Out',
+                  icon: Icons.logout,
+                  event: 'logout',
                 ),
               ],
             ),
@@ -128,8 +72,10 @@ class _AccountPageState extends State<AccountPage> {
 class AccountOption extends StatelessWidget {
   final String title;
   final IconData icon;
+  final String event;
 
-  const AccountOption({required this.title, required this.icon});
+  const AccountOption(
+      {required this.title, required this.icon, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +91,21 @@ class AccountOption extends StatelessWidget {
         ),
         trailing: Icon(Icons.arrow_forward_ios, color: Colors.white),
         onTap: () {
-          // اضف الإجراء عند الضغط
+          if (event == 'del') {
+            accountData ac = accountData(
+                userName: CurrentUsersInsys[0].userName,
+                passWord: CurrentUsersInsys[0].passWord,
+                Email: CurrentUsersInsys[0].Email);
+
+            users.removeWhere((ac) => ac.userName == ac.userName);
+
+            CurrentUsersInsys.removeAt(0);
+
+            Navigator.pushNamed(context, 'login');
+          }
+          if (event == 'logout') {
+            Navigator.pushNamed(context, 'login');
+          }
         },
       ),
     );
