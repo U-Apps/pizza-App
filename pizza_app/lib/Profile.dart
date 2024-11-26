@@ -27,25 +27,55 @@ class _AccountPageState extends State<AccountPage> {
       body: Column(
         children: [
           Container(
+           
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
             ),
-            padding: EdgeInsets.symmetric(vertical: 20),
+           padding: EdgeInsets.symmetric(vertical: 5),
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('images/img.jpg'),
-                ),
-                SizedBox(height: 10),
+                
+//
+Container(
+  width:420,
+  height: 145,
+ 
+  padding: EdgeInsets.all(15),
+  decoration: BoxDecoration(
+  
+    borderRadius: BorderRadius.circular(20),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+  ),
+  child: Column(children: [
+     
+                   CircleAvatar(
+                    child:Image.asset('assets/images/avt.jpg',width: 60,height: 60,)
+                     ,
+                   )
+,
+                SizedBox(height: 3),
                 Text(
                   userName,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   userEmail,
-                  style: TextStyle(fontSize: 16, color: Color(0xFFE6361D)),
+                  style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 236, 232, 232)),
                 ),
+
+  ],)
+),
+
+//
+
+
               ],
             ),
           ),

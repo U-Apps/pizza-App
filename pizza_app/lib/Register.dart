@@ -22,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
       backgroundColor: Colors.red[400],
       appBar: AppBar(
         backgroundColor: Colors.red[400],
-        title: Text('تسجيل جديد'), // يمكنك تغيير العنوان هنا
+        title: Text('New account'), 
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -153,7 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // أزرار تسجيل الدخول باستخدام Google و Facebook
+                 
                   Column(
                     children: <Widget>[
                       IconButton(
@@ -174,17 +174,17 @@ class _SignUpPageState extends State<SignUpPage> {
                       IconButton(
                           onPressed: () => {},
                           icon: Icon(
-                            Icons.shop_2,
+                            Icons.tiktok,
                             color: Colors.white,
                           )),
                       Text(
-                        'Google',
+                        'Tiktok',
                         style: TextStyle(color: Colors.white),
                       )
                     ],
                   ),
 
-                  // يمكنك استخدام حزم خارجية مثل flutter_login
+                 
                 ],
               ),
               SizedBox(height: 16),

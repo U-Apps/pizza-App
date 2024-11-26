@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Pizzashows(
                   Tital: listOfPizza[index].name,
                   des: listOfPizza[index].des,
-                  imgName: 1,
+                  imgName:listOfPizza[index].numImg,
                 );
               },
             ),

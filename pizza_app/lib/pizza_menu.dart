@@ -41,7 +41,7 @@ class _PizzaMenuState extends State<PizzaMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 244, 242, 222),
+     
       appBar: AppBar(
         title: Text('Pizza Menu'),
         backgroundColor: Colors.red,

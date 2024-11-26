@@ -27,6 +27,6 @@ void main() {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: AccountPage(),
+        body:Welcome(),
       )));
 }

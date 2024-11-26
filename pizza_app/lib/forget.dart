@@ -51,7 +51,7 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
                     textStyle:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     padding: EdgeInsets.only(
-                        left: 100, top: 15, right: 100, bottom: 15),
+                        left: 80, top: 15, right: 80, bottom: 15),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
