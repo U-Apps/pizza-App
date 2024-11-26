@@ -31,10 +31,12 @@ class _PizzashowsState extends State<Pizzashows> {
                       fontWeight: FontWeight.w900),
                 ),
                 Text(
-                  '${widget.des}',
+                  '  ${widget.des}',
                   style: TextStyle(
                     color: Colors.white,
+                    
                   ),
+                 
                 ),
                 SizedBox(
                   height: 10,

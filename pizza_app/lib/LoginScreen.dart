@@ -120,19 +120,22 @@ class _LoginscreenState extends State<Loginscreen> {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      users.add(accountData(userName: 'ali', passWord: '123',Email:'a@gmail.com'));
+                      users.add(accountData(
+                          userName: 'ali',
+                          passWord: '123',
+                          Email: 'a@gmail.com'));
 
                       bool isAuthenticated = false;
                       for (var user in users) {
                         if (user.userName == _username.text &&
                             user.passWord == _password.text) {
-                         
                           isAuthenticated = true;
 
                           CurrentUsersInsys.add(accountData(
                               userName: user.userName,
                               passWord: user.passWord,
-                              Email: user.Email));   ;
+                              Email: user.Email));
+                          ;
                         }
                       }
                       if (isAuthenticated) {

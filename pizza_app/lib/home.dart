@@ -14,11 +14,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
- 
-  
 
   // الشاشات الثلاث
- List<Widget> _screens = [
+  List<Widget> _screens = [
     HomeScreen(),
     PizzaMenu(),
     AccountPage(),
@@ -62,29 +60,40 @@ class _HomeState extends State<Home> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  final List<Pizza> listOfPizza = [
-    Pizza(
-        name: 'Margherita',
-        des: 'A classic Italian pizza\n with tomatoes,',
-        numImg: 2,
-        price: '\$20'),
-    Pizza(
-        name: 'Meat Feast',
-        des: 'Loaded with meats\n and toppings.',
-        numImg: 3,
-        price: '\$30'),
-    Pizza(
-        name: 'Veggie Delight',
-        des: 'Fresh veggies with\n special sauce.',
-        numImg: 4,
-        price: '\$40'),
-    Pizza(
-        name: 'Spicy Diablo',
-        des: 'Spicy sauce with\n hot peppers.',
-        numImg: 1,
-        price: '\$50'),
-  ];
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // TextEditingController _searchBar =TextEditingController();
+
+//search fun
+  // List<Pizza> filter = [];
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //    filter = listOfPizza;
+
+  // }
+
+  // void _filterItem(String quary) {
+
+  //   setState(){
+  //     if (quary.isEmpty) {
+  //       filter = listOfPizza;
+  //       return;
+  //     } else {
+
+  //       filter = listOfPizza.where(
+  //           (item) => item.name.toLowerCase().contains(quary.toLowerCase())).toList();
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +129,22 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 23),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 15,
+              ),
+              Text(
+                'DisAcounts',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.start,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+
           Container(
             height: 180,
             child: ListView.builder(
@@ -136,35 +160,57 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.all(5),
-                hintText: 'Search for Pizza',
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: const Icon(Icons.clear),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
+          //searchBar
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: TextField(
+          //     controller:_searchBar ,
+          //     onChanged:_filterItem ,
+          //     decoration: InputDecoration(
+          //       contentPadding: const EdgeInsets.all(5),
+          //       hintText: 'Search for Pizza',
+          //       prefixIcon: const Icon(Icons.search),
+          //       suffixIcon: const Icon(Icons.clear),
+          //       border: OutlineInputBorder(
+          //         borderRadius: BorderRadius.circular(20),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          //
+
+          const SizedBox(
+            height: 20,
+            width: 100,
           ),
-          const SizedBox(height: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 15,
+              ),
+              Text(
+                'Best seller',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.start,
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
           Container(
             height: 250,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: listOfPizza.length,
-              itemBuilder: (context, index) {
-                return Pizzacards(
-                  tital: listOfPizza[index].name,
-                  des: listOfPizza[index].des,
-                  imgNum: listOfPizza[index].numImg,
-                  price: listOfPizza[index].price,
-                );
-              },
-            ),
+                scrollDirection: Axis.horizontal,
+                itemCount: listOfPizza.length,
+                itemBuilder: (context, index) {
+                  return Pizzacards(
+                      tital: listOfPizza[index].name,
+                      des: listOfPizza[index].des,
+                      imgNum: listOfPizza[index].numImg,
+                      price: listOfPizza[index].price,
+                      rate: listOfPizza[index].rate);
+                }),
           ),
           const SizedBox(height: 5),
         ],

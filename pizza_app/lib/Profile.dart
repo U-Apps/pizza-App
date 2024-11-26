@@ -98,14 +98,9 @@ class AccountOption extends StatelessWidget {
                 Email: CurrentUsersInsys[0].Email);
 
             users.removeWhere((ac) => ac.userName == ac.userName);
-            //    users.remove(accountData(
-            // userName: CurrentUsersInsys[0].userName,
-            // passWord: CurrentUsersInsys[0].passWord,
-            // Email: CurrentUsersInsys[0].Email));
-
+           
             CurrentUsersInsys.removeAt(0);
-            print(CurrentUsersInsys.isEmpty);
-
+           
             Navigator.pushNamed(context, 'login');
           }
           if (event == 'logout') {

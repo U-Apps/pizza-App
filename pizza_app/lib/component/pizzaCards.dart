@@ -1,9 +1,21 @@
+import 'dart:math';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:flutter/material.dart';
+import 'package:pizza_app/cart_screen.dart';
+import '../models/pizza.dart';
 
 class Pizzacards extends StatefulWidget {
-  final String tital, des,price;
+  final String tital, des, price;
   final int imgNum;
-  const Pizzacards({super.key,required this.tital,required this.des,required this.imgNum,required this.price});
+  final double rate;
+
+  const Pizzacards(
+      {super.key,
+      required this.tital,
+      required this.des,
+      required this.imgNum,
+      required this.price,
+      required this.rate});
 
   @override
   State<Pizzacards> createState() => _PizzacardsState();
@@ -42,16 +54,16 @@ class _PizzacardsState extends State<Pizzacards> {
                 Text(
                   '${widget.tital}',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 5),
                 Text(
                   '${widget.des}',
-                  style: TextStyle(fontSize: 10),
+                  style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -65,15 +77,63 @@ class _PizzacardsState extends State<Pizzacards> {
                     SizedBox(
                       width: 50,
                     ),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(Icons.add, color: Colors.white),
+
+                    RatingStars(
+                      axis: Axis.horizontal,
+                      value: widget.rate,
+                      onValueChanged: (v) {
+                        //
+                        setState(() {
+                          double rate = widget.rate;
+                          rate = v;
+                        });
+                      },
+                      starCount: 4,
+                      starSize: 12.5,
+                      valueLabelColor: const Color(0xff9b9b9b),
+                      valueLabelTextStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 8.0),
+                      valueLabelRadius: 10,
+                      maxValue: 4,
+                      starSpacing: 1,
+                      maxValueVisibility: true,
+                      valueLabelVisibility: true,
+                      animationDuration: Duration(milliseconds: 1000),
+                      valueLabelPadding: const EdgeInsets.symmetric(
+                          vertical: 1, horizontal: 8),
+                      valueLabelMargin: const EdgeInsets.only(right: 8),
+                      starOffColor: const Color(0xffe7e8ea),
+                      starColor: Colors.yellow,
+                      angle: 12,
                     ),
+
+                    // value: widget.rate,
+                    // onRated: (rating) {
+                    //   widget.rate = rating;
+                    // },
+                    // starsCount:5,
+                    // size:20,
+                    // color:Colors.amber
+                    // starShap:StarShap.polygon
+
+                    // )
+
+                    // IconButton(
+                    //       onPressed: () =>{},
+
+                    //       icon: Icon(
+                    //         Icons.star_purple500_sharp
+                    //         ,grade: 10,
+                    //         color: Colors.amber,
+                    //       )),
+
+                    // Container(
+
+                    //   child:Icon(Icons.abc)
+                    //   )
                   ],
                 ),
               ],

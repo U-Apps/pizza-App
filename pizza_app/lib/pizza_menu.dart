@@ -10,29 +10,6 @@ class PizzaMenu extends StatefulWidget {
 }
 
 class _PizzaMenuState extends State<PizzaMenu> {
-  final List<Pizza> listOfPizza = [
-    Pizza(
-        name: 'Margherita',
-        des: 'A classic Italian pizza\n with tomatoes,',
-        numImg: 2,
-        price: '\$20'),
-    Pizza(
-        name: 'Meat Feast',
-        des: 'Loaded with meats\n and toppings.',
-        numImg: 3,
-        price: '\$30'),
-    Pizza(
-        name: 'Veggie Delight',
-        des: 'Fresh veggies with\n special sauce.',
-        numImg: 4,
-        price: '\$40'),
-    Pizza(
-        name: 'Spicy Diablo',
-        des: 'Spicy sauce with\n hot peppers.',
-        numImg: 1,
-        price: '\$50'),
-  ];
-
   List<Pizza> filteredPizzaList = [];
   List<Pizza> cartItems = [];
 

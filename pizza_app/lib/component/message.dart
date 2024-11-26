@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Message {
-  showSuccessDialog(BuildContext Content, String content, Icon iconss,String route ) {
+  showSuccessDialog(
+      BuildContext Content, String content, Icon iconss, String route) {
     showDialog(
       context: Content,
       builder: (BuildContext context) {

@@ -151,15 +151,15 @@ class _SignUpPageState extends State<SignUpPage> {
                   // أزرار تسجيل الدخول باستخدام Google و Facebook
                   Column(
                     children: <Widget>[
-                      IconButton(onPressed: () => {}, icon: Icon(Icons.shop_2)),
-                      Text('Google')
+                      IconButton(onPressed: () => {}, icon: Icon(Icons.facebook,color: Colors.white,)),
+                      Text('Facebook',style: TextStyle(color: Colors.white),)
                     ],
                   ),
 
                   Column(
                     children: <Widget>[
-                      IconButton(onPressed: () => {}, icon: Icon(Icons.shop_2)),
-                      Text('Google')
+                      IconButton(onPressed: () => {}, icon: Icon(Icons.shop_2,color: Colors.white,)),
+                      Text('Google',style: TextStyle(color: Colors.white),)
                     ],
                   ),
 
