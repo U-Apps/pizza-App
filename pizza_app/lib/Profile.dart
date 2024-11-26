@@ -16,6 +16,7 @@ class _AccountPageState extends State<AccountPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
+        automaticallyImplyLeading: false,
         title: Text(
           'Account',
           style: TextStyle(color: Colors.white),
