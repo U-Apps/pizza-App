@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AccountPage extends StatelessWidget {
+class AccountPage extends StatefulWidget {
+  @override
+  _AccountPageState createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
+  String userName = "Ahmed";
+  String userEmail = "ahmed@example.com";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +39,11 @@ class AccountPage extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Nick',
+                    userName,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '+91 7984223613',
+                    userEmail,
                     style: TextStyle(fontSize: 16, color: Color(0xFFE6361D)),
                   ),
                 ],
@@ -46,43 +54,69 @@ class AccountPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(20),
               children: [
-                AccountOption(title: 'Privacy & Settings', icon: Icons.lock),
-                AccountOption(title: 'Track Order', icon: Icons.pedal_bike),
-                AccountOption(title: 'Order History', icon: Icons.history),
-                AccountOption(title: 'Payment Options', icon: Icons.payment),
-                AccountOption(
-                    title: 'Delivery Address', icon: Icons.location_on),
-                AccountOption(title: 'Favorite Order', icon: Icons.favorite),
-                AccountOption(
-                    title: 'Donate #SaveSoil', icon: Icons.volunteer_activism),
+                AccountOption(title: 'About Us', icon: Icons.info),
+                AccountOption(title: 'Help', icon: Icons.help),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: ElevatedButton(
-              onPressed: () {
-                // تسجيل الخروج
-              },
-              style: ElevatedButton.styleFrom(
-                shadowColor: Color(0xFFE6361D),
-                iconColor: Color(0xFFE6361D),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 15),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.logout, color: Color(0xFFE6361D)),
-                  SizedBox(width: 10),
-                  Text(
-                    'Log Out',
-                    style: TextStyle(fontSize: 16, color: Color(0xFFE6361D)),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // تسجيل الخروج
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: Color(0xFFE6361D),
+                      backgroundColor: Color(0xFFE6361D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.logout, color: Colors.white),
+                        SizedBox(width: 10),
+                        Text(
+                          'Log Out',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // حذف الحساب
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: Colors.red,
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.delete, color: Colors.white),
+                        SizedBox(width: 10),
+                        Text(
+                          'Delete Account',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
