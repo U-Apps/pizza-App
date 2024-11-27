@@ -15,14 +15,14 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _email = TextEditingController();
-
+  bool _issecurityPassWord = true;
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red[400],
       appBar: AppBar(
         backgroundColor: Colors.red[400],
-        title: Text('New account'), 
+        title: Text('New account'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,8 +38,9 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 20),
               TextFormField(
                   controller: _username,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.account_circle),
                     labelText: 'UserName',
                     labelStyle: TextStyle(color: Colors.black),
                     errorStyle: TextStyle(color: Colors.white),
@@ -64,6 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   controller: _email,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.email_outlined),
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.black),
                     errorStyle: TextStyle(color: Colors.white),
@@ -86,9 +88,10 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 16),
               TextFormField(
                   controller: _password,
-                  obscureText: true,
-                  keyboardType: TextInputType.emailAddress,
+                  obscureText: _issecurityPassWord,
+                  keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
+                    suffixIcon: togglePassWord(),
                     labelText: 'PassWord',
                     labelStyle: TextStyle(color: Colors.black),
                     errorStyle: TextStyle(color: Colors.white),
@@ -105,6 +108,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'PassWord is empty';
+                    } else if (value.length <4) {
+                      return 'the password should be bigger then 4';
                     }
                     return null;
                   }),
@@ -120,7 +125,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
-                  // هنا يمكنك إضافة منطق التسجيل (مثال: التحقق من البيانات، إرسالها إلى الخادم)
                   print('The registration button has been clicked');
                   if (_formKey.currentState!.validate()) {
                     // showSuccessDialog(context);
@@ -153,7 +157,6 @@ class _SignUpPageState extends State<SignUpPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                 
                   Column(
                     children: <Widget>[
                       IconButton(
@@ -168,7 +171,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       )
                     ],
                   ),
-
                   Column(
                     children: <Widget>[
                       IconButton(
@@ -183,14 +185,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       )
                     ],
                   ),
-
-                 
                 ],
               ),
               SizedBox(height: 16),
               TextButton(
                 onPressed: () {
-                  // الانتقال إلى صفحة تسجيل الدخول
                   Navigator.pushNamed(context, 'login');
                 },
                 child: Text(
@@ -206,34 +205,17 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void showSuccessDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Center(
-          child: AlertDialog(
-            contentPadding: EdgeInsets.only(left: 20, right: 30, top: 15),
-            content: Text(
-              'You have successfully logged in',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, 'home');
-                  // إغلاق الحوار
-                },
-                child: Text('Yes'),
-              ),
-            ],
-          ),
-        );
+  Widget togglePassWord() {
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          _issecurityPassWord = !_issecurityPassWord;
+        });
       },
+      icon: _issecurityPassWord
+          ? Icon(Icons.visibility)
+          : Icon(Icons.visibility_off),
+      color: Colors.grey,
     );
   }
 }

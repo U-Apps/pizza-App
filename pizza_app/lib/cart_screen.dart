@@ -45,7 +45,7 @@ class _CartScreenState extends State<CartScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // إغلاق النافذة بدون حذف العناصر
+                Navigator.of(context).pop(); 
               },
               child: Text('Cancel'),
             ),

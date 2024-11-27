@@ -26,7 +26,7 @@ class _PizzacardsState extends State<Pizzacards> {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15), // يمكنك تعديل قيمة الدائرة
+        borderRadius: BorderRadius.circular(15), 
       ),
       color: Colors.red,
       child: Column(
@@ -37,7 +37,7 @@ class _PizzacardsState extends State<Pizzacards> {
           //   children: [
 
           //     SizedBox(),
-          //     // مسافة فارغة
+          //   
           //     Icon(Icons.favorite, color: Colors.white),
           //   ],
           // ),
@@ -82,7 +82,7 @@ class _PizzacardsState extends State<Pizzacards> {
                       axis: Axis.horizontal,
                       value: widget.rate,
                       onValueChanged: (v) {
-                        //
+                        
                         setState(() {
                           double rate = widget.rate;
                           rate = v;

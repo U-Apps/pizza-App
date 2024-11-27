@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app/component/message.dart';
 import 'package:pizza_app/home.dart';
 import 'package:pizza_app/models/accountDate.dart';
-// import 'package:pizza_app/models/loginaccount.dart';
 import 'package:pizza_app/pizza_menu.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -19,11 +18,12 @@ class _LoginscreenState extends State<Loginscreen> {
   TextEditingController _email = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-
+ bool _issecurityPassWord = true;
   Widget build(BuildContext context) {
+     
     return Scaffold(
       backgroundColor:
-          const Color.fromRGBO(239, 83, 80, 1), // لون الخلفية الأحمر
+          const Color.fromRGBO(239, 83, 80, 1), 
       body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.only(left: 10, right: 10),
@@ -55,6 +55,7 @@ class _LoginscreenState extends State<Loginscreen> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: ' UserName',
+                     suffixIcon:Icon(Icons.account_circle_outlined),
                     labelStyle: TextStyle(color: Colors.black),
                     errorStyle:
                         TextStyle(color: Color.fromARGB(255, 242, 242, 242)),
@@ -70,25 +71,27 @@ class _LoginscreenState extends State<Loginscreen> {
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter email address';
+                      return 'Please enter userName';
                     }
-                    if (value!.length < 1) {
-                      return 'Password should be at least 8 characters long';
-                    }
+                    
                     return null;
                   },
                 ),
                 SizedBox(height: 15),
                 TextFormField(
                   controller: _password,
-                  obscureText: true,
+                  obscureText: _issecurityPassWord,
+         
                   decoration: InputDecoration(
+                  
+                   suffixIcon: togglePassWord(),
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Colors.black),
                     errorStyle: TextStyle(color: Colors.white),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
+                      
                         borderRadius: BorderRadius.circular(20)),
                   ),
                   onChanged: (value) {
@@ -100,7 +103,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     if (value!.isEmpty) {
                       return 'Please enter password';
                     }
-                    if (value.length < 1) {
+                    if (value.length < 4) {
                       return 'Password length is short';
                     }
                     return null;
@@ -155,7 +158,6 @@ class _LoginscreenState extends State<Loginscreen> {
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, 'forget');
-                    // هنا يمكنك إضافة منطق نسيان كلمة المرور
                   },
                   child: Text(
                     'Forgot Password',
@@ -179,7 +181,6 @@ class _LoginscreenState extends State<Loginscreen> {
 
                 ElevatedButton(
                   onPressed: () {
-                    // هنا يمكنك إضافة منطق التسجيل
                     Navigator.pushNamed(context, 'Regitered');
                   },
                   style: ElevatedButton.styleFrom(
@@ -200,4 +201,25 @@ class _LoginscreenState extends State<Loginscreen> {
       ),
     );
   }
+
+
+
+Widget togglePassWord() {
+    return IconButton(
+      onPressed: () {
+       setState(() {
+          _issecurityPassWord = !_issecurityPassWord;
+       });
+      },
+      icon: _issecurityPassWord
+          ? Icon(Icons.visibility)
+          : Icon(Icons.visibility_off),
+      color: Colors.grey,
+    );
+  }
+
+
 }
+
+
+ 

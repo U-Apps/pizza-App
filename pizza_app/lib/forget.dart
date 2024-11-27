@@ -19,7 +19,7 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // هنا يمكنك إضافة منطق للعودة إلى الشاشة السابقة
+           
             Navigator.pop(context);
           },
         ),
@@ -62,12 +62,11 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
                       Icon(Icons.warning),
                       'login');
 
-                  // هنا يمكنك إضافة منطق لإرسال رمز التحقق
                 },
                 child: Text('Send verification code'),
               ),
               SizedBox(height: 20),
-              // لوحة المفاتيح الرقمية (يمكنك استخدام حزمة خارجية لتخصيصها بشكل أكبر)
+
             ],
           ),
         ),

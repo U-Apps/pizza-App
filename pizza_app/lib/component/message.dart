@@ -39,7 +39,7 @@ class Message {
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '${route}');
-                  // إغلاق الحوار
+            
                 },
                 child: Text('Yes'),
               ),
