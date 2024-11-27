@@ -20,13 +20,6 @@ void main() {
       },
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red[400],
-          title: Text(
-            'Pizza App',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        body:Welcome(),
+        body: Welcome(),
       )));
 }
