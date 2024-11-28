@@ -82,6 +82,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Email is empty';
+                    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                            caseSensitive: false)
+                        .hasMatch(value)) {
+                      return 'please insert a correct email';
                     }
                     return null;
                   }),
@@ -108,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'PassWord is empty';
-                    } else if (value.length <4) {
+                    } else if (value.length < 4) {
                       return 'the password should be bigger then 4';
                     }
                     return null;

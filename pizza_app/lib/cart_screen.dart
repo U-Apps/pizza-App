@@ -45,16 +45,16 @@ class _CartScreenState extends State<CartScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); 
+                Navigator.of(context).pop();
               },
               child: Text('Cancel'),
             ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  widget.cartItems.clear(); // إفراغ السلة
+                  widget.cartItems.clear();
                 });
-                Navigator.of(context).pop(); // إغلاق النافذة
+                Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('Payment completed successfully!'),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Message {
   showSuccessDialog(
-      BuildContext Content, String content, Icon iconss, String route) {
+      BuildContext Content, String content, Icon icons, String route) {
     showDialog(
       context: Content,
       builder: (BuildContext context) {
@@ -18,7 +18,7 @@ class Message {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(
-                    iconss.icon,
+                    icons.icon,
                     size: 100,
                     color: Colors.green,
                   ),
@@ -39,7 +39,6 @@ class Message {
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '${route}');
-            
                 },
                 child: Text('Yes'),
               ),
